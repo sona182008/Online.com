@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Shop groceries and daily essentials at Renu Store Pro.">
+<title>Products | Renu Store Pro</title>
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="responsive.css">
+<link rel="stylesheet" href="animations.css">
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <div class="logo"><a href="index.html">RenuStore</a></div>
+    <nav class="navbar" aria-label="Primary navigation">
+      <a href="index.html">Home</a><a href="products.html" class="active">Products</a>
+      <a href="search.html">Search</a><a href="wishlist.html">Wishlist</a><a href="cart.html">Cart</a><a href="login.html">Login</a>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="cart-icon" aria-label="Shopping cart">🛒 <span class="cart-count">0</span></a>
+      <button type="button" class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="search-page">
+<div class="container">
+  <div class="page-title">
+    <div><h1>Shop groceries</h1><p>Fresh essentials, everyday value and simple checkout.</p></div>
+    <a class="btn" href="cart.html">View Cart</a>
+  </div>
+
+  <div class="filter-section" aria-label="Product filters">
+    <div class="filter-group"><label for="categoryFilter">Category</label>
+      <select id="categoryFilter"><option value="all">All categories</option><option value="fruits">Fruits</option><option value="vegetables">Vegetables</option><option value="dairy">Dairy</option><option value="snacks">Snacks</option><option value="beverages">Beverages</option><option value="grocery">Grocery</option></select>
+    </div>
+    <div class="filter-group"><label for="priceFilter">Price</label>
+      <select id="priceFilter"><option value="all">All prices</option><option value="low">Under ₹100</option><option value="medium">₹100–₹500</option><option value="high">Above ₹500</option></select>
+    </div>
+    <div class="filter-group"><label for="sortProducts">Sort</label>
+      <select id="sortProducts"><option value="default">Recommended</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="name-a-z">Name: A–Z</option><option value="name-z-a">Name: Z–A</option></select>
+    </div>
+    <button class="reset-btn" type="button" id="resetProducts">Reset</button>
+  </div>
+
+  <div class="search-box" style="margin:18px 0">
+    <input id="productSearch" type="search" placeholder="Search products…" aria-label="Search products">
+  </div>
+
+  <section class="modern-section" style="padding-top:0">
+    <div class="product-grid" id="productGrid">
+<article class="product-card" data-name="Fresh Apples" data-category="fruits" data-price="120">
+      <img src="file_00000000c2d882118e694c72a60560ac.png" alt="Fresh Apples" loading="lazy">
+      <div class="product-info"><h3>Fresh Apples</h3><p class="product-category">Fruits</p><p class="product-price">₹120</p>
+      <button type="button" onclick='addToCart({id:1,name:"Fresh Apples",price:120,image:"file_00000000c2d882118e694c72a60560ac.png"})'>🛒 Add to cart</button></div>
+    </article><article class="product-card" data-name="Fresh Bananas" data-category="fruits" data-price="60">
+      <img src="file_00000000c2d882118e694c72a60560ac.png" alt="Fresh Bananas" loading="lazy">
+      <div class="product-info"><h3>Fresh Bananas</h3><p class="product-category">Fruits</p><p class="product-price">₹60</p>
+      <button type="button" onclick='addToCart({id:2,name:"Fresh Bananas",price:60,image:"file_00000000c2d882118e694c72a60560ac.png"})'>🛒 Add to cart</button></div>
+    </article><article class="product-card" data-name="Fresh Tomatoes" data-category="vegetables" data-price="50">
+      <img src="file_00000000c4048207a24a37382bb9c645.png" alt="Fresh Tomatoes" loading="lazy">
+      <div class="product-info"><h3>Fresh Tomatoes</h3><p class="product-category">Vegetables</p><p class="product-price">₹50</p>
+      <button type="button" onclick='addToCart({id:3,name:"Fresh Tomatoes",price:50,image:"file_00000000c4048207a24a37382bb9c645.png"})'>🛒 Add to cart</button></div>
+    </article><article class="product-card" data-name="Mixed Vegetables" data-category="vegetables" data-price="90">
+      <img src="file_0000000051948207bc971392adc44dbd.png" alt="Mixed Vegetables" loading="lazy">
+      <div class="product-info"><h3>Mixed Vegetables</h3><p class="product-category">Vegetables</p><p class="product-price">₹90</p>
+      <button type="button" onclick='addToCart({id:4,name:"Mixed Vegetables",price:90,image:"file_0000000051948207bc971392adc44dbd.png"})'>🛒 Add to cart</button></div>
+    </article><article class="product-card" data-name="Amul Taaza Milk" data-category="dairy" data-price="58">
+      <img src="file_00000000d86c8207a9f916fa72b67d53.png" alt="Amul Taaza Milk" loading="lazy">
+      <div class="product-info"><h3>Amul Taaza Milk</h3><p class="product-category">Dairy</p><p class="product-price">₹58</p>
+      <button type="button" onclick='addToCart({id:5,name:"Amul Taaza Milk",price:58,image:"file_00000000d86c8207a9f916fa72b67d53.png"})'>🛒 Add to cart</button></div>
+    </article><article class="product-card" data-name="Amul Butter" data-category="dairy" data-price="60">
+      <img src="file_00000000d86c8207a9f916fa72b67d53.png" alt="Amul Butter" loading="lazy">
+      <div class="product-info"><h3>Amul Butter</h3><p class="product-category">Dairy</p><p class="product-price">₹60</p>
+      <button type="button" onclick='addToCart({id:6,name:"Amul Butter",price:60,image:"file_00000000d86c8207a9f916fa72b67d53.png"})'>🛒 Add to cart</button></div>
+    </article><article class="product-card" data-name="Fortune Sunlite Oil" data-category="grocery" data-price="135">
+      <img src="file_0000000007c08207830b579a21541cda.png" alt="Fortune Sunlite Oil" loading="lazy">
+      <div class="product-info"><h3>Fortune Sunlite Oil</h3><p class="product-category">Grocery</p><p class="product-price">₹135</p>
+      <button type="button" onclick='addToCart({id:7,name:"Fortune Sunlite Oil",price:135,image:"file_0000000007c08207830b579a21541cda.png"})'>🛒 Add to cart</button></div>
+    </article><article class="product-card" data-name="Aashirvaad Select Atta" data-category="grocery" data-price="248">
+      <img src="file_00000000021c821181cc6aaa1bec2bf1.png" alt="Aashirvaad Select Atta" loading="lazy">
+      <div class="product-info"><h3>Aashirvaad Select Atta</h3><p class="product-category">Grocery</p><p class="product-price">₹248</p>
+      <button type="button" onclick='addToCart({id:8,name:"Aashirvaad Select Atta",price:248,image:"file_00000000021c821181cc6aaa1bec2bf1.png"})'>🛒 Add to cart</button></div>
+    </article><article class="product-card" data-name="Britannia Good Day" data-category="snacks" data-price="40">
+      <img src="file_000000006f3482079d0579c9d35ef5ce.png" alt="Britannia Good Day" loading="lazy">
+      <div class="product-info"><h3>Britannia Good Day</h3><p class="product-category">Snacks</p><p class="product-price">₹40</p>
+      <button type="button" onclick='addToCart({id:9,name:"Britannia Good Day",price:40,image:"file_000000006f3482079d0579c9d35ef5ce.png"})'>🛒 Add to cart</button></div>
+    </article><article class="product-card" data-name="Parle-G Biscuits" data-category="snacks" data-price="35">
+      <img src="file_00000000eae48207b9b727d513110bf8.png" alt="Parle-G Biscuits" loading="lazy">
+      <div class="product-info"><h3>Parle-G Biscuits</h3><p class="product-category">Snacks</p><p class="product-price">₹35</p>
+      <button type="button" onclick='addToCart({id:10,name:"Parle-G Biscuits",price:35,image:"file_00000000eae48207b9b727d513110bf8.png"})'>🛒 Add to cart</button></div>
+    </article><article class="product-card" data-name="Maggi 2-Min Noodles" data-category="snacks" data-price="60">
+      <img src="file_00000000eae48207b9b727d513110bf8.png" alt="Maggi 2-Min Noodles" loading="lazy">
+      <div class="product-info"><h3>Maggi 2-Min Noodles</h3><p class="product-category">Snacks</p><p class="product-price">₹60</p>
+      <button type="button" onclick='addToCart({id:11,name:"Maggi 2-Min Noodles",price:60,image:"file_00000000eae48207b9b727d513110bf8.png"})'>🛒 Add to cart</button></div>
+    </article><article class="product-card" data-name="Coca Cola" data-category="beverages" data-price="88">
+      <img src="file_000000008318820796c7d15036efaec2.png" alt="Coca Cola" loading="lazy">
+      <div class="product-info"><h3>Coca Cola</h3><p class="product-category">Beverages</p><p class="product-price">₹88</p>
+      <button type="button" onclick='addToCart({id:12,name:"Coca Cola",price:88,image:"file_000000008318820796c7d15036efaec2.png"})'>🛒 Add to cart</button></div>
+    </article><article class="product-card" data-name="Tata Tea Premium" data-category="beverages" data-price="145">
+      <img src="file_000000008318820796c7d15036efaec2.png" alt="Tata Tea Premium" loading="lazy">
+      <div class="product-info"><h3>Tata Tea Premium</h3><p class="product-category">Beverages</p><p class="product-price">₹145</p>
+      <button type="button" onclick='addToCart({id:13,name:"Tata Tea Premium",price:145,image:"file_000000008318820796c7d15036efaec2.png"})'>🛒 Add to cart</button></div>
+    </article><article class="product-card" data-name="Basmati Rice" data-category="grocery" data-price="320">
+      <img src="file_00000000021c821181cc6aaa1bec2bf1.png" alt="Basmati Rice" loading="lazy">
+      <div class="product-info"><h3>Basmati Rice</h3><p class="product-category">Grocery</p><p class="product-price">₹320</p>
+      <button type="button" onclick='addToCart({id:14,name:"Basmati Rice",price:320,image:"file_00000000021c821181cc6aaa1bec2bf1.png"})'>🛒 Add to cart</button></div>
+    </article><article class="product-card" data-name="Surf Excel Matic" data-category="grocery" data-price="210">
+      <img src="file_00000000021c821181cc6aaa1bec2bf1.png" alt="Surf Excel Matic" loading="lazy">
+      <div class="product-info"><h3>Surf Excel Matic</h3><p class="product-category">Grocery</p><p class="product-price">₹210</p>
+      <button type="button" onclick='addToCart({id:15,name:"Surf Excel Matic",price:210,image:"file_00000000021c821181cc6aaa1bec2bf1.png"})'>🛒 Add to cart</button></div>
+    </article>
+    </div>
+    <div id="noResults" class="no-results" style="display:none"><h2>No products found</h2><p>Try another search or reset the filters.</p></div>
+  </section>
+</div>
+</main>
+<footer class="footer"><div class="container"><div class="footer-content">
+  <div class="footer-box"><h3>RenuStore</h3><p>Fresh groceries, thoughtfully delivered.</p></div>
+  <div class="footer-box"><h3>Shop</h3><a href="index.html">Home</a><a href="search.html">Search</a><a href="cart.html">Cart</a></div>
+  <div class="footer-box"><h3>Support</h3><a href="contact.html">Contact</a><a href="faq.html">FAQs</a></div>
+</div><p class="copyright">© 2026 Renu Store Pro. All Rights Reserved.</p></div></footer>
+<script src="app.js"></script><script src="cart.js"></script><script src="search.js"></script><script src="ui.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const cards=[...document.querySelectorAll(".product-card")], input=document.getElementById("productSearch");
+ const cat=document.getElementById("categoryFilter"), price=document.getElementById("priceFilter"), sort=document.getElementById("sortProducts"), empty=document.getElementById("noResults");
+ function apply(){
+   const q=input.value.trim().toLowerCase(), c=cat.value, p=price.value;
+   cards.forEach(card=>{
+     const name=card.dataset.name.toLowerCase(), category=card.dataset.category, value=Number(card.dataset.price);
+     const ok=(name.includes(q)||category.includes(q))&&(c==="all"||category===c)&&
+       (p==="all"||(p==="low"&&value<=100)||(p==="medium"&&value>100&&value<=500)||(p==="high"&&value>500));
+     card.hidden=!ok;
+   });
+   const visible=cards.filter(c=>!c.hidden); empty.style.display=visible.length?"none":"block";
+   const sorted=[...cards].sort((a,b)=>{
+     const av=Number(a.dataset.price),bv=Number(b.dataset.price),an=a.dataset.name,bn=b.dataset.name;
+     return sort.value==="price-low"?av-bv:sort.value==="price-high"?bv-av:sort.value==="name-a-z"?an.localeCompare(bn):sort.value==="name-z-a"?bn.localeCompare(an):0;
+   });
+   sorted.forEach(c=>document.getElementById("productGrid").appendChild(c));
+ }
+ [input,cat,price,sort].forEach(el=>el.addEventListener("input",apply));
+ document.getElementById("resetProducts").addEventListener("click",()=>{input.value="";cat.value="all";price.value="all";sort.value="default";apply()});
+ apply();
+});
+</script>
+</body></html>

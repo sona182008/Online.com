@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Search groceries and daily essentials at RenuStore Pro">
+
+    <title>Search Products | RenuStore Pro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="container">
+
+            <div class="logo">
+                <a href="index.html">
+                    RenuStore
+                </a>
+            </div>
+
+            <nav class="navbar">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="products.html">
+                    Products
+                </a>
+
+                <a href="search.html" class="active">
+                    Search
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="cart.html" class="cart-icon" aria-label="Cart">
+                    🛒
+                    <span class="cart-count">0</span>
+                </a>
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    aria-label="Open menu">
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main>
+
+        <section class="search-page">
+
+            <div class="container">
+
+                <!-- PAGE TITLE -->
+
+                <div class="page-title">
+
+                    <h1>
+                        Search Products
+                    </h1>
+
+                    <p>
+                        Find your favourite groceries and daily essentials
+                    </p>
+
+                </div>
+
+
+                <!-- ================= SEARCH AREA ================= -->
+
+                <div class="search-area">
+
+                    <div class="search-box">
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Search fruits, vegetables, dairy..."
+                            autocomplete="off"
+                            aria-label="Search products">
+
+                        <button
+                            type="button"
+                            id="clearSearch"
+                            class="search-clear">
+                            ✕
+                        </button>
+
+                    </div>
+
+
+                    <!-- LIVE SUGGESTIONS -->
+
+                    <div class="suggestion-box"></div>
+
+
+                    <!-- SEARCH BUTTON -->
+
+                    <button
+                        type="button"
+                        class="search-btn"
+                        onclick="searchProducts(document.getElementById('searchInput').value)">
+                        🔍 Search
+                    </button>
+
+                </div>
+
+
+                <!-- ================= SEARCH HISTORY ================= -->
+
+                <div class="search-history-section">
+
+                    <div class="section-heading">
+
+                        <h2>
+                            Recent Searches
+                        </h2>
+
+                        <button
+                            type="button"
+                            onclick="clearSearchHistory()">
+                            Clear History
+                        </button>
+
+                    </div>
+
+                    <div class="search-history"></div>
+
+                </div>
+
+
+                <!-- ================= FILTERS ================= -->
+
+                <div class="filter-section">
+
+                    <div class="filter-group">
+
+                        <label for="categoryFilter">
+                            Category
+                        </label>
+
+                        <select id="categoryFilter">
+
+                            <option value="all">
+                                All Categories
+                            </option>
+
+                            <option value="fruits">
+                                Fruits
+                            </option>
+
+                            <option value="vegetables">
+                                Vegetables
+                            </option>
+
+                            <option value="dairy">
+                                Dairy
+                            </option>
+
+                            <option value="snacks">
+                                Snacks
+                            </option>
+
+                            <option value="beverages">
+                                Beverages
+                            </option>
+
+                            <option value="grocery">
+                                Grocery
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="filter-group">
+
+                        <label for="priceFilter">
+                            Price
+                        </label>
+
+                        <select id="priceFilter">
+
+                            <option value="all">
+                                All Prices
+                            </option>
+
+                            <option value="low">
+                                Under ₹100
+                            </option>
+
+                            <option value="medium">
+                                ₹100 - ₹500
+                            </option>
+
+                            <option value="high">
+                                Above ₹500
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="filter-group">
+
+                        <label for="sortProducts">
+                            Sort By
+                        </label>
+
+                        <select id="sortProducts">
+
+                            <option value="default">
+                                Default
+                            </option>
+
+                            <option value="price-low">
+                                Price: Low to High
+                            </option>
+
+                            <option value="price-high">
+                                Price: High to Low
+                            </option>
+
+                            <option value="name-a-z">
+                                Name: A to Z
+                            </option>
+
+                            <option value="name-z-a">
+                                Name: Z to A
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="reset-btn"
+                        onclick="resetFilters()">
+
+                        🔄 Reset
+
+                    </button>
+
+                </div>
+
+
+                <!-- ================= NO RESULTS ================= -->
+
+                <div
+                    id="noResults"
+                    class="no-results"
+                    style="display:none;">
+
+                    <h2>
+                        😕 No Products Found
+                    </h2>
+
+                    <p>
+                        Try another search or reset your filters.
+                    </p>
+
+                    <button
+                        type="button"
+                        onclick="resetFilters(); clearSearch();">
+
+                        Show All Products
+
+                    </button>
+
+                </div>
+
+
+                <!-- ================= PRODUCTS ================= -->
+
+                <section class="products-section">
+
+                    <div class="section-heading">
+
+                        <h2>
+                            All Products
+                        </h2>
+
+                    </div>
+
+
+                    <div class="product-grid">
+
+
+                        <!-- PRODUCT 1 -->
+
+                        <article
+                            class="product-card"
+                            data-name="Fresh Apples"
+                            data-category="fruits"
+                            data-price="120">
+
+                            <img
+                                src="file_00000000c2d882118e694c72a60560ac.png"
+                                alt="Fresh Apples"
+                                onerror="this.src='favicon.png'">
+
+                            <div class="product-info">
+
+                                <h3>
+                                    Fresh Apples
+                                </h3>
+
+                                <p class="product-category">
+                                    Fruits
+                                </p>
+
+                                <p class="product-price">
+                                    ₹120
+                                </p>
+
+                                <button
+                                    type="button"
+                                    onclick="addToCart({
+                                        id: 1,
+                                        name: 'Fresh Apples',
+                                        price: 120,
+                                        image: 'file_00000000c2d882118e694c72a60560ac.png'
+                                    })">
+
+                                    🛒 Add to Cart
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- PRODUCT 2 -->
+
+                        <article
+                            class="product-card"
+                            data-name="Fresh Bananas"
+                            data-category="fruits"
+                            data-price="60">
+
+                            <img
+                                src="file_00000000c2d882118e694c72a60560ac.png"
+                                alt="Fresh Bananas"
+                                onerror="this.src='favicon.png'">
+
+                            <div class="product-info">
+
+                                <h3>
+                                    Fresh Bananas
+                                </h3>
+
+                                <p class="product-category">
+                                    Fruits
+                                </p>
+
+                                <p class="product-price">
+                                    ₹60
+                                </p>
+
+                                <button
+                                    type="button"
+                                    onclick="addToCart({
+                                        id: 2,
+                                        name: 'Fresh Bananas',
+                                        price: 60,
+                                        image: 'file_00000000c2d882118e694c72a60560ac.png'
+                                    })">
+
+                                    🛒 Add to Cart
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- PRODUCT 3 -->
+
+                        <article
+                            class="product-card"
+                            data-name="Fresh Tomatoes"
+                            data-category="vegetables"
+                            data-price="50">
+
+                            <img
+                                src="file_00000000c4048207a24a37382bb9c645.png"
+                                alt="Fresh Tomatoes"
+                                onerror="this.src='favicon.png'">
+
+                            <div class="product-info">
+
+                                <h3>
+                                    Fresh Tomatoes
+                                </h3>
+
+                                <p class="product-category">
+                                    Vegetables
+                                </p>
+
+                                <p class="product-price">
+                                    ₹50
+                                </p>
+
+                                <button
+                                    type="button"
+                                    onclick="addToCart({
+                                        id: 3,
+                                        name: 'Fresh Tomatoes',
+                                        price: 50,
+                                        image: 'file_00000000c4048207a24a37382bb9c645.png'
+                                    })">
+
+                                    🛒 Add to Cart
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- PRODUCT 4 -->
+
+                        <article
+                            class="product-card"
+                            data-name="Fresh Milk"
+                            data-category="dairy"
+                            data-price="65">
+
+                            <img
+                                src="file_00000000d86c8207a9f916fa72b67d53.png"
+                                alt="Fresh Milk"
+                                onerror="this.src='favicon.png'">
+
+                            <div class="product-info">
+
+                                <h3>
+                                    Fresh Milk
+                                </h3>
+
+                                <p class="product-category">
+                                    Dairy
+                                </p>
+
+                                <p class="product-price">
+                                    ₹65
+                                </p>
+
+                                <button
+                                    type="button"
+                                    onclick="addToCart({
+                                        id: 4,
+                                        name: 'Fresh Milk',
+                                        price: 65,
+                                        image: 'file_00000000d86c8207a9f916fa72b67d53.png'
+                                    })">
+
+                                    🛒 Add to Cart
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- PRODUCT 5 -->
+
+                        <article
+                            class="product-card"
+                            data-name="Potato Chips"
+                            data-category="snacks"
+                            data-price="30">
+
+                            <img
+                                src="file_00000000eae48207b9b727d513110bf8.png"
+                                alt="Potato Chips"
+                                onerror="this.src='favicon.png'">
+
+                            <div class="product-info">
+
+                                <h3>
+                                    Potato Chips
+                                </h3>
+
+                                <p class="product-category">
+                                    Snacks
+                                </p>
+
+                                <p class="product-price">
+                                    ₹30
+                                </p>
+
+                                <button
+                                    type="button"
+                                    onclick="addToCart({
+                                        id: 5,
+                                        name: 'Potato Chips',
+                                        price: 30,
+                                        image: 'file_00000000eae48207b9b727d513110bf8.png'
+                                    })">
+
+                                    🛒 Add to Cart
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- PRODUCT 6 -->
+
+                        <article
+                            class="product-card"
+                            data-name="Cold Drink"
+                            data-category="beverages"
+                            data-price="45">
+
+                            <img
+                                src="file_000000008318820796c7d15036efaec2.png"
+                                alt="Cold Drink"
+                                onerror="this.src='favicon.png'">
+
+                            <div class="product-info">
+
+                                <h3>
+                                    Cold Drink
+                                </h3>
+
+                                <p class="product-category">
+                                    Beverages
+                                </p>
+
+                                <p class="product-price">
+                                    ₹45
+                                </p>
+
+                                <button
+                                    type="button"
+                                    onclick="addToCart({
+                                        id: 6,
+                                        name: 'Cold Drink',
+                                        price: 45,
+                                        image: 'file_000000008318820796c7d15036efaec2.png'
+                                    })">
+
+                                    🛒 Add to Cart
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <div class="footer-box">
+
+                    <h3>
+                        RenuStore
+                    </h3>
+
+                    <p>
+                        Your trusted online grocery store.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-box">
+
+                    <h3>
+                        Quick Links
+                    </h3>
+
+                    <a href="index.html">
+                        Home
+                    </a>
+
+                    <a href="products.html">
+                        Products
+                    </a>
+
+                    <a href="cart.html">
+                        Cart
+                    </a>
+
+                </div>
+
+
+                <div class="footer-box">
+
+                    <h3>
+                        Support
+                    </h3>
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+                    <a href="privacy-policy.html">
+                        Privacy Policy
+                    </a>
+
+                    <a href="terms.html">
+                        Terms &amp; Conditions
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <p class="copyright">
+                © 2026 RenuStore. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="app.js"></script>
+    <script src="cart.js"></script>
+    <script src="auth.js"></script>
+    <script src="search.js"></script>
+    <script src="ui.js"></script>
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const clearButton =
+                document.getElementById("clearSearch");
+
+            const searchInput =
+                document.getElementById("searchInput");
+
+
+            if (clearButton) {
+
+                clearButton.addEventListener("click", function () {
+
+                    if (typeof clearSearch === "function") {
+                        clearSearch();
+                    }
+
+                    if (searchInput) {
+                        searchInput.focus();
+                    }
+
+                });
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
