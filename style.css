@@ -288,3 +288,19 @@ button:disabled{cursor:not-allowed;opacity:.6}
 .wishlist-small{position:absolute;right:10px;top:10px;z-index:2;width:34px;height:34px;border:0;border-radius:50%;background:rgba(255,255,255,.92);font-size:1.1rem;box-shadow:var(--shadow-sm)}
 .price-line{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:9px}.old-price{text-decoration:line-through;color:#94a39a;font-size:.75rem;margin-left:5px}.add-btn{border:0;border-radius:9px;background:var(--primary);color:#fff;padding:8px 11px;font-weight:800}
 .login-message{padding:10px 12px;border-radius:10px;font-size:.84rem}.login-message.success{color:#166534;background:#ecfdf3}.login-message.error{color:#991b1b;background:#fef2f2}
+
+
+@media (max-width:520px){
+  .hero-modern .hero-image{
+    height:230px;
+    min-height:0;
+  }
+
+  .hero-modern .hero-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+}
+
+
