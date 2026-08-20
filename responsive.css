@@ -1,1 +1,42 @@
 /* Responsive rules are included in style.css. Kept as a compatibility stylesheet. */
+/* Mobile-First Layout (Default for Phones) */
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.cart-items {
+  width: 100%;
+}
+
+.cart-summary {
+  width: 100%;
+  background-color: #f8f9fa;
+  padding: 1.25rem;
+  border-radius: 8px;
+  position: static;
+}
+
+/* Desktop Viewport (Screens wider than 768px) */
+@media (min-width: 768px) {
+  .cart-container {
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .cart-items {
+    flex: 2;
+  }
+
+  .cart-summary {
+    flex: 1;
+    position: sticky;
+    top: 2rem;
+  }
+}
